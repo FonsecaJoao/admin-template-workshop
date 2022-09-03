@@ -1,0 +1,17 @@
+<header class="page-header">
+  <div class="left-side">
+    <img class="brand-logo" src="assets/icons/logo.svg" alt="Brand's Logo" />
+    <img
+      (click)="onMenuIconClick.emit()"
+      src="assets/icons/menu.svg"
+      alt="Menu icon - click to expand sidebar navigation"
+    />
+  </div>
+
+  <div class="right-side">
+    <div class="user-initials">
+      <span> {{ userInitials }}</span>
+    </div>
+    <span *ngIf="displayUserName" class="user-name">{{ userName }}</span>
+  </div>
+</header>
