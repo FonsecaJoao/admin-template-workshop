@@ -1,0 +1,53 @@
+header.page-header {
+  border-bottom: 2px solid #f3f6f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+
+  > .left-side {
+    display: flex;
+    margin-left: 25px;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 35px;
+    }
+  }
+
+  > .left-side .brand-logo {
+    margin-right: 38px;
+  }
+
+  .right-side {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+
+    @media screen and (min-width: 768px) {
+      margin-right: 100px;
+    }
+  }
+
+  .right-side > .user-initials {
+    background-color: #f6ca65;
+    border-radius: 5px;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .right-side > .user-initials > span {
+    padding: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 23px;
+  }
+
+  .right-side > .user-name {
+    color: #005b96;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 11px;
+  }
+}
