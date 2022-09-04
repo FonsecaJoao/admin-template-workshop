@@ -18,6 +18,10 @@ header.page-header {
     margin-right: 38px;
   }
 
+  > .left-side .menu-icon {
+    cursor: pointer;
+  }
+
   .right-side {
     display: flex;
     align-items: center;

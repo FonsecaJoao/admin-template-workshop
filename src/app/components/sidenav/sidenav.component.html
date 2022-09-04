@@ -1,0 +1,22 @@
+<app-header (onMenuIconClick)="onMenuIconClick()"></app-header>
+
+<section class="sidenav-wrapper">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav opened [mode]="'side'" fixedTopGap="80">
+      <mat-nav-list class="nav-list" [style.width.px]="openSideNav ? 150 : 100">
+        <div
+          class="list-wrapper"
+          [style.width.px]="openSideNav ? 110 : 25"
+          *ngFor="let item of menuItemList"
+        >
+          <img [src]="item.icon" [alt]="'Click to navigate to ' + item.name" />
+          <span class="name" *ngIf="openSideNav">{{ item.name }}</span>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-footer [navOpened]="openSideNav"></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>
