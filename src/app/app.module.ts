@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ReportsHeaderComponent } from './pages/reports/reports-header/reports-header.component';
+import { ReportsTableComponent } from './pages/reports/reports-table/reports-table.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReportsHeaderComponent } from './pages/reports/reports-header/reports-h
     FooterComponent,
     SidenavComponent,
     ReportsHeaderComponent,
+    ReportsTableComponent,
   ],
   imports: [
     BrowserModule,
