@@ -1,8 +1,12 @@
 section.reports-header {
-  margin: 35px 100px 0 0;
+  margin: 35px 25px 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 100px;
+  }
 
   .title {
     font-weight: 700;
@@ -20,6 +24,11 @@ section.reports-header {
   .form-wrapper {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .icon {
+    color: #ffffff;
   }
 
   mat-select.dropdown {
@@ -29,6 +38,22 @@ section.reports-header {
     font-weight: 400;
     font-size: 14px;
     width: 110px;
+    height: 20px;
+  }
+
+  mat-form-field.mat-form-field {
+    background-color: #1bc5bd;
+    border-radius: 5px;
+    height: 36px;
+    width: 118px;
+  }
+
+  .submit-button {
+    background-color: #005b96;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
   }
 }
 
@@ -44,5 +69,32 @@ section.reports-header {
 
   .mat-select-panel {
     background: #1bc5bd;
+  }
+
+  .mat-form-field-underline,
+  .mat-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  .mat-form-field-flex {
+    align-items: center;
+    padding: 4px 12px;
+  }
+
+  .mat-form-field-infix {
+    border: none;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .mat-form-field-label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .mat-input-element:disabled {
+    color: #ffffff;
   }
 }
