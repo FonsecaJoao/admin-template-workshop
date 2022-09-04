@@ -1,0 +1,98 @@
+<section class="reports-header" [style.marginLeft.px]="navOpened ? 65 : 15">
+  <div class="left-side">
+    <h1 class="title">Reports</h1>
+    <p class="subtitle">Easily generate a report of your transactions</p>
+  </div>
+  <div class="right-side">
+    <form [formGroup]="filtersForm" (ngSubmit)="submitForm()">
+      <div class="form-wrapper">
+        <mat-select formControlName="project" class="dropdown">
+          <mat-option [value]="'AllProjects'">All projects</mat-option>
+          <mat-option
+            *ngFor="let project of projectList"
+            [value]="project.projectId"
+            >{{ project.name }}</mat-option
+          >
+        </mat-select>
+        <mat-select formControlName="gateway" class="dropdown">
+          <mat-option [value]="'AllGateways'">All gateways</mat-option>
+          <mat-option
+            *ngFor="let gateway of gatewayList"
+            [value]="gateway.gatewayId"
+            >{{ gateway.name }}</mat-option
+          >
+        </mat-select>
+
+        <mat-form-field floatLabel="never">
+          <input
+            [max]="filtersForm.controls['toDate'].value"
+            matInput
+            formControlName="fromDate"
+            [matDatepicker]="fromDate"
+            placeholder="From date"
+          />
+          <mat-datepicker-toggle matSuffix [for]="fromDate">
+            <mat-icon matDatepickerToggleIcon class="icon" svgIcon="datepicker">
+            </mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #fromDate [disabled]="false">
+            <mat-datepicker-actions>
+              <button
+                mat-button
+                matDatepickerCancel
+                (click)="clearDate($event, 'fromDate')"
+              >
+                Clear
+              </button>
+              <button
+                mat-button
+                mat-raised-button
+                matDatepickerApply
+                color="primary"
+              >
+                Apply
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="never">
+          <input
+            [min]="filtersForm.controls['fromDate'].value"
+            matInput
+            formControlName="toDate"
+            [matDatepicker]="toDate"
+            placeholder="To date"
+          />
+          <mat-datepicker-toggle matSuffix [for]="toDate">
+            <mat-icon matDatepickerToggleIcon class="icon" svgIcon="datepicker">
+            </mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #toDate [disabled]="false">
+            <mat-datepicker-actions>
+              <button
+                mat-button
+                matDatepickerCancel
+                (click)="clearDate($event, 'toDate')"
+              >
+                Clear
+              </button>
+              <button
+                mat-button
+                mat-raised-button
+                matDatepickerApply
+                color="primary"
+              >
+                Apply
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+
+        <button mat-button type="submit" class="submit-button">
+          Generate Report
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
