@@ -1,9 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GatewaysService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() { }
+  getGateways(): Observable<Object> {
+    return this.httpClient.get(`${environment.apiUrl}gateways`);
+  }
 }
