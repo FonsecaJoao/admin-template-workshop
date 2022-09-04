@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -19,6 +19,8 @@ export class ReportsHeaderComponent implements OnInit {
   protected filtersForm: FormGroup = new FormGroup({});
 
   @Input() navOpened = false;
+
+  @Output() onGenerateReportClick = new EventEmitter();
 
   constructor(
     private projectsService: ProjectsService,
@@ -42,7 +44,14 @@ export class ReportsHeaderComponent implements OnInit {
   }
 
   protected submitForm(): void {
-    console.log(this.filtersForm);
+    const { project, gateway, fromDate, toDate } = this.filtersForm.controls;
+
+    this.onGenerateReportClick.emit({
+      project: project.value,
+      gateway: gateway.value,
+      fromDate: fromDate.value,
+      toDate: toDate.value,
+    });
   }
 
   private initialize() {

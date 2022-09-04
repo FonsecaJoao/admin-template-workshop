@@ -27,4 +27,8 @@ export class SidenavComponent implements OnInit {
   onMenuIconClick(): void {
     this.openSideNav = !this.openSideNav;
   }
+
+  requestReport(event: { [key: string]: string }): void {
+    // TODO
+  }
 }
