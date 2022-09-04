@@ -5,14 +5,24 @@
   </div>
   <div class="right-side">
     <form [formGroup]="filtersForm">
-      <mat-select formControlName="project" class="dropdown">
-        <mat-option [value]="'AllProjects'">All projects</mat-option>
-        <mat-option
-          *ngFor="let project of projectList"
-          [value]="project.projectId"
-          >{{ project.name }}</mat-option
-        >
-      </mat-select>
+      <div class="form-wrapper">
+        <mat-select formControlName="project" class="dropdown">
+          <mat-option [value]="'AllProjects'">All projects</mat-option>
+          <mat-option
+            *ngFor="let project of projectList"
+            [value]="project.projectId"
+            >{{ project.name }}</mat-option
+          >
+        </mat-select>
+        <mat-select formControlName="gateway" class="dropdown">
+          <mat-option [value]="'AllGateways'">All gateways</mat-option>
+          <mat-option
+            *ngFor="let gateway of gatewayList"
+            [value]="gateway.gatewayId"
+            >{{ gateway.name }}</mat-option
+          >
+        </mat-select>
+      </div>
     </form>
   </div>
 </section>

@@ -17,7 +17,12 @@ section.reports-header {
     color: #7e8299;
   }
 
-  .right-side mat-select.dropdown {
+  .form-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  mat-select.dropdown {
     background-color: #1bc5bd;
     border-radius: 5px;
     padding: 8px 13px;
