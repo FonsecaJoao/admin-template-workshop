@@ -8,6 +8,11 @@ section.sidenav-wrapper {
 
   > .sidenav-container {
     flex: 1;
+    background-color: #ffffff;
+  }
+
+  > .sidenav-container .mat-drawer-side {
+    border-right: none;
   }
 
   .nav-list {
