@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'report-system';
-
-  onMenuIconClick(): void {
-    // TODO Open the menu
-  }
 }
