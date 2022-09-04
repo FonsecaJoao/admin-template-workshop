@@ -1,1 +1,18 @@
-<p>reports-header works!</p>
+<section class="reports-header" [style.marginLeft.px]="navOpened ? 65 : 15">
+  <div class="left-side">
+    <h1 class="title">Reports</h1>
+    <p class="subtitle">Easily generate a report of your transactions</p>
+  </div>
+  <div class="right-side">
+    <form [formGroup]="filtersForm">
+      <mat-select formControlName="project" class="dropdown">
+        <mat-option [value]="'AllProjects'">All projects</mat-option>
+        <mat-option
+          *ngFor="let project of projectList"
+          [value]="project.projectId"
+          >{{ project.name }}</mat-option
+        >
+      </mat-select>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+section.reports-header {
+  margin: 35px 100px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #011f4b;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    color: #7e8299;
+  }
+
+  .right-side mat-select.dropdown {
+    background-color: #1bc5bd;
+    border-radius: 5px;
+    padding: 8px 13px;
+    font-weight: 400;
+    font-size: 14px;
+    width: 110px;
+  }
+}
+
+:host ::ng-deep {
+  .mat-select-value {
+    color: #ffffff;
+  }
+
+  .mat-select-arrow {
+    color: #ffffff;
+    border-top: 10px solid;
+  }
+}
