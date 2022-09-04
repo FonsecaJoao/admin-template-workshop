@@ -1,0 +1,22 @@
+footer {
+  color: #005b96;
+  font-weight: 700;
+  font-size: 16px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+
+  .link {
+    text-decoration: none;
+    margin-right: 5px;
+  }
+
+  .link:last-of-type {
+    margin-left: 5px;
+  }
+
+  .link:visited,
+  .link:active {
+    color: #005b96;
+  }
+}
