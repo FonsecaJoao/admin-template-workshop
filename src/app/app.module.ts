@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,7 +48,10 @@ import { ReportsTableComponent } from './pages/reports/reports-table/reports-tab
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'USD' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
