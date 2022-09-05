@@ -20,6 +20,13 @@
         [navOpened]="openSideNav"
         (onGenerateReportClick)="requestReport($event)"
       ></app-reports-header>
+      <ng-container *ngIf="hasResults; else noResults">
+        <app-reports-table
+          [navOpened]="openSideNav"
+          [reportData]="reportData"
+        ></app-reports-table>
+      </ng-container>
+      <ng-template #noResults> app no results works </ng-template>
       <app-footer [navOpened]="openSideNav"></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
