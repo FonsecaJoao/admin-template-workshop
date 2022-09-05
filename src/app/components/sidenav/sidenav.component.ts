@@ -29,6 +29,16 @@ export class SidenavComponent implements OnInit {
     { icon: 'assets/icons/logout.svg', name: 'Logout' },
   ];
   protected hasResults = false;
+  protected noResultsContent: {
+    title: string;
+    description: string;
+    imagePath: string;
+  } = {
+    title: 'No results',
+    description:
+      'Currently you have no data for the reports to be generated. Once you start generating traffic through the Balance application the reports will be shown.',
+    imagePath: 'assets/imgs/no-results.svg',
+  };
 
   constructor(private reportsService: ReportsService) {}
 
@@ -63,9 +73,17 @@ export class SidenavComponent implements OnInit {
           event.gatewaysData
         );
 
+        this.noResultsContent = {
+          title: 'No results',
+          description:
+            'Currently you have no data for the reports to be generated. Once you start generating traffic through the Balance application the reports will be shown.',
+          imagePath: 'assets/imgs/no-results.svg',
+        };
+
         this.hasResults = true;
       } else {
         this.reportData = {};
+        this.hasResults = false;
       }
     });
   }

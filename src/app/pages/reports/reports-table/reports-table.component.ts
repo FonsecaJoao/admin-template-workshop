@@ -21,4 +21,8 @@ export class ReportsTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  trackByProjectName(index: number, item: ReportProjectData) {
+    return item.projectName;
+  }
 }

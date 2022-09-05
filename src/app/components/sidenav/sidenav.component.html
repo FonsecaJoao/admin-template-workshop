@@ -26,7 +26,14 @@
           [reportData]="reportData"
         ></app-reports-table>
       </ng-container>
-      <ng-template #noResults> app no results works </ng-template>
+      <ng-template #noResults>
+        <app-no-results
+          [navOpened]="openSideNav"
+          [title]="noResultsContent.title!"
+          [description]="noResultsContent.description!"
+          [imagePath]="noResultsContent.imagePath!"
+        ></app-no-results>
+      </ng-template>
       <app-footer [navOpened]="openSideNav"></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>

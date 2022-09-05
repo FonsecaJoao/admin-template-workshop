@@ -1,0 +1,12 @@
+<section class="no-results" [style.marginLeft.px]="navOpened ? 65 : 15">
+  <h1 class="title">{{ title }}</h1>
+  <p class="description">
+    {{ description }}
+  </p>
+  <img
+    *ngIf="imagePath"
+    class="image"
+    [src]="imagePath"
+    alt="Infographic image"
+  />
+</section>
