@@ -6,7 +6,9 @@ import { Project } from 'src/core/interfaces/project';
 import { Report } from 'src/core/interfaces/report';
 import { ReportFormattedData } from 'src/core/interfaces/report-formatted-data';
 import { ReportPayload } from 'src/core/interfaces/report-payload';
+import { User } from 'src/core/interfaces/user';
 import { ReportsService } from 'src/core/services/reports.service';
+import { UsersService } from 'src/core/services/users.service';
 
 interface Item {
   icon: string;
@@ -19,6 +21,10 @@ interface Item {
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
+  protected userInfo: { initials: string; name: string } = {
+    initials: '',
+    name: '',
+  };
   protected reportData: ReportFormattedData = {};
   protected openSideNav = false;
   protected menuItemList: Item[] = [
@@ -40,9 +46,21 @@ export class SidenavComponent implements OnInit {
     imagePath: 'assets/imgs/no-results.svg',
   };
 
-  constructor(private reportsService: ReportsService) {}
+  constructor(
+    private reportsService: ReportsService,
+    private usersService: UsersService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usersService.getUsers().subscribe((users) => {
+      const userData = users as ApiResponse<User[]>;
+      const { firstName, lastName } = userData.data[0];
+      this.userInfo = {
+        initials: firstName?.slice(0, 1) + lastName?.slice(0, 1),
+        name: firstName + ' ' + lastName,
+      };
+    });
+  }
 
   onMenuIconClick(): void {
     this.openSideNav = !this.openSideNav;

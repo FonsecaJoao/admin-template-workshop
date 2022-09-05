@@ -1,4 +1,8 @@
-<app-header (onMenuIconClick)="onMenuIconClick()"></app-header>
+<app-header
+  (onMenuIconClick)="onMenuIconClick()"
+  [userInitials]="userInfo.initials"
+  [userName]="userInfo.name"
+></app-header>
 
 <section class="sidenav-wrapper">
   <mat-sidenav-container class="sidenav-container">
