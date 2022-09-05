@@ -4,7 +4,7 @@ export interface ReportProjectData {
   projectName?: string;
 }
 
-interface ReportProjectRow {
+export interface ReportProjectRow {
   created: string;
   gatewayId: string;
   gatewayName: string;
