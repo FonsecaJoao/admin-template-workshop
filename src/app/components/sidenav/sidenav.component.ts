@@ -66,6 +66,7 @@ export class SidenavComponent implements OnInit {
         this.hasResults = true;
       } else {
         this.reportData = {};
+        this.hasResults = false;
       }
     });
   }
