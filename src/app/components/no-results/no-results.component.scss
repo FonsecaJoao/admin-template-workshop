@@ -1,0 +1,40 @@
+section.no-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 100px 25px 0 0;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 170px;
+    margin-right: 100px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #011f4b;
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 16px;
+    color: #7e8299;
+    text-align: center;
+    line-height: 19px;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: 470px;
+    }
+  }
+
+  .image {
+    margin: 51px 0 102px 0;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
+  }
+}
