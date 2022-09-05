@@ -1,0 +1,61 @@
+<section class="reports-table" [style.marginLeft.px]="navOpened ? 65 : 15">
+  <p class="title">{{ reportData.title }}</p>
+
+  <mat-accordion class="report-accordion">
+    <mat-expansion-panel
+      *ngFor="let reportItem of reportData.list?.values(); let i = index"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title"
+          >{{ reportItem.projectName }}
+        </mat-panel-title>
+        <mat-panel-description>
+          TOTAL:
+          {{
+            reportItem.totalProjectAmount | currency: "USD":"code":"3.2-2":"fr"
+          }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table mat-table [dataSource]="reportItem.tableData" class="table">
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.created }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gatewayName">
+          <th mat-header-cell *matHeaderCellDef>Gateway</th>
+          <td mat-cell *matCellDef="let element">{{ element.gatewayName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="paymentId">
+          <th mat-header-cell *matHeaderCellDef>Transaction ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.paymentId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          [ngClass]="'header-row'"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [ngClass]="'row'"
+        ></tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>
+
+<section class="total" [style.marginLeft.px]="navOpened ? 65 : 15">
+  <p class="bottom-line">
+    TOTAL:
+    {{ reportData.totalAmount | currency: "USD":"code":"3.2-2":"fr" }}
+  </p>
+</section>
