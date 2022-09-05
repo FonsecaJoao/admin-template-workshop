@@ -51,6 +51,8 @@ export class ReportsHeaderComponent implements OnInit {
       gateway: gateway.value,
       fromDate: fromDate.value,
       toDate: toDate.value,
+      projectsData: this.projectList,
+      gatewaysData: this.gatewayList,
     });
   }
 
