@@ -98,10 +98,22 @@ section.total {
     background-color: #f1fafe;
   }
 
-  .mat-header-cell,
-  .mat-cell {
+  th.mat-header-cell,
+  td.mat-cell {
     color: #011f4b;
     font-size: 16px;
     font-weight: 400;
+    text-align: center !important;
+  }
+
+  th.mat-header-cell:first-of-type,
+  td.mat-cell:first-of-type {
+    text-align: start !important;
+  }
+
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type {
+    padding-right: 24px;
+    text-align: end;
   }
 }
