@@ -14,21 +14,65 @@ export const adaptReportDateBasedOnFilterValues = (
   projectsData: Project[],
   gatewaysData: Gateway[]
 ): ReportFormattedData => {
-  if (!payload.projectId && !payload.gatewayId) {
-    return getFormattedDataWhenNoProjectsAndNoGateways(
-      data,
-      projectsData,
-      gatewaysData
-    );
+  switch (true) {
+    case !payload.projectId && !payload.gatewayId:
+      return getFormattedDataWhenNoProjectsAndNoGateways(
+        data,
+        projectsData,
+        gatewaysData
+      );
+    case !!payload.projectId && !payload.gatewayId:
+      return {
+        list: new Map().set('projectId', {
+          tableData: [],
+          totalProjectAmount: 0,
+          projectName: '',
+        }),
+        totalAmount: 0,
+        title: 'Not implemented',
+      };
+    case !payload.projectId && !!payload.gatewayId:
+      return {
+        list: new Map().set('projectId', {
+          tableData: [],
+          totalProjectAmount: 0,
+          projectName: '',
+        }),
+        totalAmount: 0,
+        title: 'Not implemented',
+      };
+    default:
+      return getFormattedDataWhenProjectsAndGatewaysExist(
+        data,
+        projectsData,
+        gatewaysData
+      );
   }
+};
 
-  if (payload.projectId === 'AllProjects') {
-  }
+const getFormattedDataWhenProjectsAndGatewaysExist = (
+  reportData: Report[],
+  projectsData: Project[],
+  gatewaysData: Gateway[]
+): ReportFormattedData => {
+  const projectName =
+    projectsData.find((p) => p.projectId === reportData[0].projectId)?.name ||
+    '';
+  const gatewayName =
+    gatewaysData.find((g) => g.gatewayId === reportData[0].gatewayId)?.name ||
+    '';
 
-  if (payload.gatewayId === 'AllGateways') {
-  }
+  const { totalAmount, map } = populateMap(
+    reportData,
+    projectsData,
+    gatewaysData
+  );
 
-  return {};
+  return {
+    list: map,
+    totalAmount: Number(totalAmount.toFixed(2)),
+    title: projectName + ' | ' + gatewayName,
+  };
 };
 
 const getFormattedDataWhenNoProjectsAndNoGateways = (
@@ -36,8 +80,26 @@ const getFormattedDataWhenNoProjectsAndNoGateways = (
   projectsData: Project[],
   gatewaysData: Gateway[]
 ): ReportFormattedData => {
+  const { totalAmount, map } = populateMap(
+    reportData,
+    projectsData,
+    gatewaysData
+  );
+
+  return {
+    list: map,
+    totalAmount: Number(totalAmount.toFixed(2)),
+    title: 'All projects | All gateways',
+  };
+};
+
+const populateMap = (
+  reportData: Report[],
+  projectsData: Project[],
+  gatewaysData: Gateway[]
+): { totalAmount: number; map: Map<string, ReportProjectData> } => {
   let totalAmount = 0;
-  const dataMap = new Map<string, ReportProjectData>();
+  let dataMap = new Map<string, ReportProjectData>();
 
   reportData.map((val) => {
     if (!dataMap.has(val.projectId)) {
@@ -57,11 +119,9 @@ const getFormattedDataWhenNoProjectsAndNoGateways = (
 
     totalAmount += val.amount;
   });
-
   return {
-    list: dataMap,
-    totalAmount: Number(totalAmount.toFixed(2)),
-    title: 'All projects | All gateways',
+    totalAmount,
+    map: dataMap,
   };
 };
 
